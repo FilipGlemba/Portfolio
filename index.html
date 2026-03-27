@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="sk" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moje Portfólio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- reCAPTCHA skript -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <!-- LOADING SCREEN -->
+    <div class="loader" id="loader">
+      <div class="loader-inner">
+        <div class="loader-logo">FG</div>
+        <div class="loader-bar"><div class="loader-fill"></div></div>
+      </div>
+    </div>
+
+    <!-- CURSOR -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- PARTICLES -->
+    <canvas id="particles"></canvas>
+
+    <!-- NAVIGÁCIA -->
+    <nav class="navbar">
+      <div class="logo">Filip Glemba</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">O mne</a></li>
+        <li><a href="#skills">Zručnosti</a></li>
+        <li><a href="#projects">Projekty</a></li>
+        <li><a href="#timeline">Skúsenosti</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" title="Prepnúť tému">
+          🌙
+        </button>
+        <button class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="hero-greeting">Ahoj, volám sa</p>
+        <h1 class="hero-name">Filip Glemba</h1>
+        <h2 class="hero-role">
+          <span id="typingText"></span><span class="cursor-blink">|</span>
+        </h2>
+        <div class="hero-btns">
+          <a href="#projects" class="btn">Pozri projekty</a>
+          <a href="#contact" class="btn btn-ghost">Kontaktuj ma</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- O MNE -->
+    <section class="about" id="about">
+      <h2 class="section-title">O mne</h2>
+      <div class="about-inner">
+        <div>
+          <p>
+            Ahoj! Som mladý developer zo Slovenska, ktorého baví tvorba webov a
+            aplikácií. Momentálne studujem na SSOŠTA a intenzívne budujem svoje
+            portfólio smerom k fullstack developmentu.
+          </p>
+          <p>
+            Keď nekódujem, rád hrám hry, pozerám tech videá alebo skúšam nové
+            nástroje a frameworky.
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-box">
+            <div class="stat-number">3+</div>
+            <div class="stat-label">Projekty</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">1+</div>
+            <div class="stat-label">Rok učenia</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Technológie</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Káv vypitých</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ZRUČNOSTI -->
+    <section class="skills" id="skills">
+      <h2 class="section-title">Zručnosti</h2>
+
+      <div class="skills-category">
+        <h3 class="skill-category-title">Frontend</h3>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon">🌐</div>
+            HTML
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🎨</div>
+            CSS
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">⚡</div>
+            JavaScript
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3 class="skill-category-title">Backend</h3>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon">🖥️</div>
+            Node.js
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🗄️</div>
+            MongoDB
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3 class="skill-category-title">Nástroje</h3>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon">🐱</div>
+            Git
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJEKTY -->
+    <section class="projects" id="projects">
+      <h2 class="section-title">Projekty</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-img">🌤️</div>
+          <div class="project-info">
+            <h3>Weather App</h3>
+            <p>
+              Aplikácia ktorá zobrazuje počasie podľa mesta pomocou
+              OpenWeatherMap API.
+            </p>
+            <div class="project-tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn-small">Live demo</a>
+              <a href="#" class="btn-small btn-outline">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img">✅</div>
+          <div class="project-info">
+            <h3>Task Manager</h3>
+            <p>
+              Todo aplikácia s filtrovaním, drag & drop a ukladaním do
+              localStorage.
+            </p>
+            <div class="project-tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn-small">Live demo</a>
+              <a href="#" class="btn-small btn-outline">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img">🛒</div>
+          <div class="project-info">
+            <h3>Fullstack E-shop</h3>
+            <p>E-shop s backendom, databázou a prihlásením užívateľov.</p>
+            <div class="project-tags">
+              <span>Node.js</span><span>Express</span><span>MongoDB</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn-small">Live demo</a>
+              <a href="#" class="btn-small btn-outline">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section" id="timeline">
+      <h2 class="section-title">Skúsenosti</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <span class="timeline-date">2025 — dnes</span>
+          <div class="timeline-content">
+            <h3>SSOSTA — Stredná škola</h3>
+            <p>
+              Nastúpil som na SSOSTA kde sa naplno venujem IT a web
+              developmentu. Aktívne budujem projekty, prehlbujem znalosti
+              JavaScriptu a smerujem k fullstack developmentu.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <span class="timeline-date">Leto 2024</span>
+          <div class="timeline-content">
+            <h3>Kurz web developmentu — Bratislava</h3>
+            <p>
+              Absolvoval som intenzívny kurz priamo v Bratislave, kde som si
+              upevnil základy HTML a CSS a prvýkrát sa stretol so štruktúrovaným
+              prístupom ku kódovaniu.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <span class="timeline-date">Začiatok 2024</span>
+          <div class="timeline-content">
+            <h3>Prvý kontakt s HTML & CSS</h3>
+            <p>
+              Z vlastnej zvedavosti som začal skúmať ako fungujú weby. Prvé
+              riadky HTML, prvé štýly v CSS — a okamžite som vedel, že toto je
+              to pravé.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <!-- DÔLEŽITÉ: Zmeň YOUR_FORM_ID na svoj ID z formspree.io -->
+    <section class="contact" id="contact">
+      <h2 class="section-title">Kontakt</h2>
+      <div class="contact-inner">
+        <div class="contact-info">
+          <p>
+            Máš projekt, otázku alebo len chceš povedať ahoj? Napíš mi —
+            zvyčajne odpisujem do 24 hodín.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:tvoj@email.com" class="contact-link">
+              <span class="contact-link-icon">✉️</span>tvoj@email.com
+            </a>
+            <a href="https://github.com" target="_blank" class="contact-link">
+              <span class="contact-link-icon">🐱</span>github.com/tvojeusername
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="contact-link">
+              <span class="contact-link-icon">💼</span
+              >linkedin.com/in/tvojprofil
+            </a>
+          </div>
+        </div>
+        <form
+          class="contact-form"
+          id="contactForm"
+          action="https://formspree.io/f/xwvwpaee"
+          method="POST"
+        >
+          <!-- Honeypot pre boty (neviditeľné pre ľudí) -->
+          <input
+            type="text"
+            name="_gotcha"
+            autocomplete="off"
+            tabindex="-1"
+            style="
+              position: absolute;
+              left: -9999px;
+              width: 1px;
+              height: 1px;
+              overflow: hidden;
+            "
+          />
+
+          <input
+            type="text"
+            name="name"
+            placeholder="Tvoje meno"
+            required
+            maxlength="50"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Tvoj email"
+            required
+            maxlength="100"
+          />
+          <textarea
+            name="message"
+            placeholder="Správa..."
+            rows="5"
+            required
+            maxlength="1000"
+          ></textarea>
+          <!-- reCAPTCHA -->
+          <div
+            class="g-recaptcha"
+            data-sitekey="6LcjT5osAAAAAM5bRwfbeSJrkcmV557DIOWjcmu_"
+          ></div>
+          <button type="submit" class="btn">Odoslať</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p>Vytvorené s ❤️ a ☕ — Filip Glemba © 2025</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
