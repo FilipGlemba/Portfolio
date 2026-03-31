@@ -1,0 +1,280 @@
+﻿<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atmos | Weather Experience</title>
+    <meta
+      name="description"
+      content="A portfolio-grade weather dashboard with secure backend proxy, forecast views, and premium UI."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+
+      <main class="app">
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Portfolio Project</p>
+            <div class="brand-lockup">
+              <span class="brand-mark" aria-hidden="true">A</span>
+              <h1>Atmos</h1>
+            </div>
+            <p class="hero-text">
+              Premium weather tracking with cinematic styling, secure API access,
+              custom iconography, and a polished dual-theme experience.
+            </p>
+          </div>
+
+          <div class="hero-actions">
+            <button
+              class="segmented-toggle"
+              id="unitToggle"
+              type="button"
+              aria-label="Toggle temperature unit"
+              aria-pressed="false"
+            >
+              <span class="segmented-track">
+                <span class="segmented-label">Celsius</span>
+                <span class="segmented-label">Fahrenheit</span>
+                <span class="segmented-thumb"></span>
+              </span>
+            </button>
+
+            <button
+              class="theme-toggle"
+              id="themeToggle"
+              type="button"
+              aria-label="Toggle color theme"
+              aria-pressed="false"
+            >
+              <span class="theme-toggle-track">
+                <span class="theme-toggle-label">Dark</span>
+                <span class="theme-toggle-label">Light</span>
+                <span class="theme-toggle-thumb"></span>
+              </span>
+            </button>
+          </div>
+        </section>
+
+        <section class="weather-panel" aria-labelledby="weatherHeading">
+          <div class="panel-top">
+            <div>
+              <p class="section-label">Live Conditions</p>
+              <h2 id="weatherHeading">Search any city</h2>
+            </div>
+            <div class="status-wrap">
+              <button class="ghost-button" id="locationBtn" type="button">
+                Use my location
+              </button>
+              <p class="status-badge" id="statusBadge">Ready</p>
+            </div>
+          </div>
+
+          <form class="search-form" id="searchForm">
+            <div class="search-box">
+              <label class="sr-only" for="cityInput">City name</label>
+              <input
+                type="text"
+                id="cityInput"
+                name="city"
+                placeholder="Enter a city name"
+                autocomplete="off"
+                spellcheck="false"
+                aria-expanded="false"
+                aria-controls="suggestions"
+              />
+              <div class="suggestions" id="suggestions" role="listbox"></div>
+            </div>
+            <button class="search-button" id="searchBtn" type="submit">
+              Check weather
+            </button>
+          </form>
+
+          <div class="search-extras">
+            <div class="quick-row">
+              <span class="quick-label">Quick picks</span>
+              <div class="quick-actions" id="quickActions">
+                <button class="quick-chip" type="button" data-city="Bratislava">Bratislava</button>
+                <button class="quick-chip" type="button" data-city="Prague">Prague</button>
+                <button class="quick-chip" type="button" data-city="Tokyo">Tokyo</button>
+                <button class="quick-chip" type="button" data-city="New York">New York</button>
+              </div>
+            </div>
+
+            <div class="quick-row">
+              <span class="quick-label">Recent searches</span>
+              <div class="quick-actions" id="recentSearches">
+                <span class="empty-inline">No recent cities yet.</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="message" id="message" role="status" aria-live="polite">
+            Enter a city to load current weather data.
+          </p>
+
+          <div class="dashboard-grid">
+            <section class="current-weather panel-card panel-card-featured reveal-card">
+              <div class="current-main">
+                <div class="current-meta">
+                  <p class="city" id="cityName">No city selected</p>
+                  <p class="description" id="description">Waiting for a search</p>
+                  <p class="updated" id="updatedAt">Last update: --</p>
+                </div>
+
+                <div class="temperature-wrap">
+                  <div id="weatherIcon" class="weather-icon" aria-hidden="true"></div>
+                  <div>
+                    <p class="temperature" id="temp">--</p>
+                    <p class="feels-like" id="feelsLike">Feels like --</p>
+                    <p class="temperature-range" id="tempRange">H: -- / L: --</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="overview-strip">
+                <article class="mini-stat">
+                  <p class="mini-label">Condition</p>
+                  <p class="mini-value" id="weatherMain">--</p>
+                </article>
+                <article class="mini-stat">
+                  <p class="mini-label">Cloud cover</p>
+                  <p class="mini-value" id="clouds">--</p>
+                </article>
+                <article class="mini-stat">
+                  <p class="mini-label">Air quality</p>
+                  <p class="mini-value" id="airQuality">--</p>
+                </article>
+              </div>
+
+              <article class="summary-card" id="weatherSummary" aria-live="polite">
+                Smooth overview will appear here after the latest update.
+              </article>
+            </section>
+
+            <section class="panel-card reveal-card" aria-labelledby="todayHeading">
+              <div class="card-head">
+                <div>
+                  <p class="section-label">Today</p>
+                  <h3 id="todayHeading">Highlights</h3>
+                </div>
+              </div>
+              <div class="highlights">
+                <article class="stat-card">
+                  <p class="stat-label">Humidity</p>
+                  <p class="stat-value" id="humidity">--</p>
+                </article>
+                <article class="stat-card">
+                  <p class="stat-label">Wind</p>
+                  <p class="stat-value" id="wind">--</p>
+                </article>
+                <article class="stat-card">
+                  <p class="stat-label">Pressure</p>
+                  <p class="stat-value" id="pressure">--</p>
+                </article>
+                <article class="stat-card">
+                  <p class="stat-label">Visibility</p>
+                  <p class="stat-value" id="visibility">--</p>
+                </article>
+                <article class="stat-card">
+                  <p class="stat-label">Sunrise</p>
+                  <p class="stat-value" id="sunrise">--</p>
+                </article>
+                <article class="stat-card">
+                  <p class="stat-label">Sunset</p>
+                  <p class="stat-value" id="sunset">--</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="panel-card reveal-card" aria-labelledby="hourlyHeading">
+              <div class="card-head">
+                <div>
+                  <p class="section-label">Next Hours</p>
+                  <h3 id="hourlyHeading">Hourly outlook</h3>
+                </div>
+              </div>
+              <div class="hourly-forecast" id="hourlyForecast">
+                <article class="forecast-placeholder">Search for a city to load forecast data.</article>
+              </div>
+            </section>
+
+            <section class="panel-card reveal-card" aria-labelledby="dailyHeading">
+              <div class="card-head">
+                <div>
+                  <p class="section-label">Next Days</p>
+                  <h3 id="dailyHeading">5 day forecast</h3>
+                </div>
+              </div>
+              <div class="daily-forecast" id="dailyForecast">
+                <article class="forecast-placeholder">Search for a city to load forecast data.</article>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="case-study reveal-card" aria-labelledby="caseStudyHeading">
+          <div class="case-study-copy">
+            <p class="section-label">Case Study</p>
+            <h2 id="caseStudyHeading">How this portfolio piece was shaped</h2>
+            <p>
+              Atmos was rebuilt from a simple weather lookup into a portfolio-grade weather
+              dashboard focused on visual polish, product thinking, and safer architecture.
+            </p>
+          </div>
+
+          <div class="case-study-grid">
+            <article class="case-card">
+              <p class="case-kicker">Challenge</p>
+              <h3>Turn a basic demo into a product-like experience</h3>
+              <p>
+                The original version handled one API call and a single weather card. The goal was to make it
+                feel premium enough for a modern developer portfolio.
+              </p>
+            </article>
+
+            <article class="case-card">
+              <p class="case-kicker">Solution</p>
+              <h3>Upgrade architecture, UX, and visual identity together</h3>
+              <p>
+                The app now uses a backend proxy, custom SVG weather icons, autocomplete search,
+                geolocation, forecast views, and theme plus unit switching.
+              </p>
+            </article>
+
+            <article class="case-card">
+              <p class="case-kicker">Stack</p>
+              <h3>Vanilla frontend with a lightweight Node proxy</h3>
+              <p>
+                HTML, CSS, and JavaScript power the UI, while a minimal Node server protects the API key
+                and proxies weather, forecast, geocoding, and air quality requests.
+              </p>
+            </article>
+
+            <article class="case-card">
+              <p class="case-kicker">UX Focus</p>
+              <h3>Fast feedback, strong readability, and memorable styling</h3>
+              <p>
+                The interface emphasizes clear hierarchy, responsive layouts, keyboard-friendly search,
+                and subtle motion that improves feel without becoming noisy.
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

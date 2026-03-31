@@ -1,179 +1,247 @@
+﻿<!-- DOCTYPE - Definuje typ dokumentu ako HTML5 -->
 <!doctype html>
+<!-- HTML tag - KorenovĂ˝ element strĂˇnky, nastavuje jazyk na slovenÄŤinu a tmavĂş tĂ©mu -->
 <html lang="sk" data-theme="dark">
+  <!-- HEAD - Obsahuje meta informĂˇcie, titulok a odkazy na externĂ© zdroje -->
   <head>
+    <!-- META CHARSET - Nastavuje kĂłdovanie znakov na UTF-8 -->
     <meta charset="UTF-8" />
+    <!-- META VIEWPORT - ZabezpeÄŤuje sprĂˇvne zobrazenie na mobilnĂ˝ch zariadeniach -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moje Portfólio</title>
+    <!-- TITLE - Titulok strĂˇnky zobrazovanĂ˝ v zĂˇloĹľke prehliadaÄŤa -->
+    <title>Moje PortfĂłlio</title>
+    <!-- LINK - NaÄŤĂ­ta externĂ© fonty z Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+    <!-- LINK - NaÄŤĂ­ta vlastnĂ© CSS ĹˇtĂ˝ly -->
     <link rel="stylesheet" href="style.css" />
     <!-- reCAPTCHA skript -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
+  <!-- BODY - HlavnĂ˝ obsah strĂˇnky -->
   <body>
-    <!-- LOADING SCREEN -->
+    <!-- LOADING SCREEN - Zobrazuje sa pri naÄŤĂ­tanĂ­ strĂˇnky -->
     <div class="loader" id="loader">
+      <!-- LOADER INNER - Kontajner pre obsah loading screen -->
       <div class="loader-inner">
+        <!-- LOADER LOGO - Logo alebo text zobrazovanĂ˝ poÄŤas naÄŤĂ­tania -->
         <div class="loader-logo">FG</div>
-        <div class="loader-bar"><div class="loader-fill"></div></div>
+        <!-- LOADER BAR - Progress bar pre naÄŤĂ­tanie -->
+        <div class="loader-bar">
+          <!-- LOADER FILL - VyplĹovanie progress baru -->
+          <div class="loader-fill"></div>
+        </div>
       </div>
     </div>
 
-    <!-- CURSOR -->
+    <!-- CURSOR - VlastnĂ˝ kurzor pre desktop -->
     <div class="cursor" id="cursor"></div>
+    <!-- CURSOR DOT - MalĂ˝ bod v strede kurzora -->
     <div class="cursor-dot" id="cursorDot"></div>
 
-    <!-- PARTICLES -->
+    <!-- PARTICLES - Canvas pre animovanĂ© ÄŤastice v pozadĂ­ -->
     <canvas id="particles"></canvas>
 
-    <!-- NAVIGÁCIA -->
+    <!-- NAVIGĂCIA - HlavnĂˇ navigaÄŤnĂˇ liĹˇta strĂˇnky -->
     <nav class="navbar">
+      <!-- LOGO - Logo alebo meno autora -->
       <div class="logo">Filip Glemba</div>
+      <!-- NAV LINKS - Zoznam navigaÄŤnĂ˝ch odkazov -->
       <ul class="nav-links" id="navLinks">
+        <!-- Odkazy na jednotlivĂ© sekcie strĂˇnky -->
         <li><a href="#about">O mne</a></li>
-        <li><a href="#skills">Zručnosti</a></li>
+        <li><a href="#skills">ZruÄŤnosti</a></li>
         <li><a href="#projects">Projekty</a></li>
-        <li><a href="#timeline">Skúsenosti</a></li>
+        <li><a href="#timeline">SkĂşsenosti</a></li>
         <li><a href="#contact">Kontakt</a></li>
       </ul>
+      <!-- NAV RIGHT - PravĂˇ strana navigaÄŤnej liĹˇty s tlaÄŤidlami -->
       <div class="nav-right">
-        <button class="theme-toggle" id="themeToggle" title="Prepnúť tému">
-          🌙
+        <!-- THEME TOGGLE - TlaÄŤidlo na prepnutie tmavej/svetlej tĂ©my -->
+        <button class="theme-toggle" id="themeToggle" title="PrepnĂşĹĄ tĂ©mu">
+          đźŚ™
         </button>
+        <!-- HAMBURGER - TlaÄŤidlo pre mobilnĂ© menu -->
         <button class="hamburger" id="hamburger">
+          <!-- Ĺ panielsky hamburger - tri ÄŤiary -->
           <span></span><span></span><span></span>
         </button>
       </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO - ĂšvodnĂˇ sekcia s pozdravom a tlaÄŤidlami -->
     <section class="hero" id="home">
+      <!-- HERO CONTENT - Obsah hero sekcie -->
       <div class="hero-content">
-        <p class="hero-greeting">Ahoj, volám sa</p>
+        <!-- HERO GREETING - Pozdrav -->
+        <p class="hero-greeting">Ahoj, volĂˇm sa</p>
+        <!-- HERO NAME - Meno autora -->
         <h1 class="hero-name">Filip Glemba</h1>
+        <!-- HERO ROLE - Role alebo titul s typing animĂˇciou -->
         <h2 class="hero-role">
-          <span id="typingText"></span><span class="cursor-blink">|</span>
+          <!-- TYPING TEXT - Text ktorĂ˝ sa pĂ­Ĺˇe animĂˇciou -->
+          <span id="typingText"></span>
+          <!-- CURSOR BLINK - BlikajĂşci kurzor -->
+          <span class="cursor-blink">|</span>
         </h2>
+        <!-- HERO BTNS - TlaÄŤidlĂˇ v hero sekcii -->
         <div class="hero-btns">
+          <!-- TlaÄŤidlo na prechod k projektom -->
           <a href="#projects" class="btn">Pozri projekty</a>
+          <!-- TlaÄŤidlo na prechod ku kontaktu -->
           <a href="#contact" class="btn btn-ghost">Kontaktuj ma</a>
         </div>
       </div>
     </section>
 
-    <!-- O MNE -->
+    <!-- O MNE - Sekcia s informĂˇciami o autorovi -->
     <section class="about" id="about">
+      <!-- SECTION TITLE - Nadpis sekcie -->
       <h2 class="section-title">O mne</h2>
+      <!-- ABOUT INNER - Kontajner pre obsah sekcie -->
       <div class="about-inner">
+        <!-- TextovĂˇ ÄŤasĹĄ o autorovi -->
         <div>
+          <!-- PrvĂ˝ odsek o autorovi -->
           <p>
-            Ahoj! Som mladý developer zo Slovenska, ktorého baví tvorba webov a
-            aplikácií. Momentálne studujem na SSOSTA a intenzívne budujem svoje
-            portfólio smerom k fullstack developmentu.
+            Ahoj! Som mladĂ˝ developer zo Slovenska, ktorĂ©ho bavĂ­ tvorba webov a
+            aplikĂˇciĂ­. MomentĂˇlne studujem na SSOSTA a intenzĂ­vne budujem svoje
+            portfĂłlio smerom k fullstack developmentu.
           </p>
+          <!-- DruhĂ˝ odsek o zĂˇÄľubĂˇch -->
           <p>
-            Keď nekódujem, rád hrám hry, pozerám tech videá alebo skúšam nové
-            nástroje a frameworky.
+            KeÄŹ nekĂłdujem, rĂˇd hrĂˇm hry, pozerĂˇm tech videĂˇ alebo skĂşĹˇam novĂ©
+            nĂˇstroje a frameworky.
           </p>
         </div>
+        <!-- ABOUT STATS - Ĺ tatistiky autora -->
         <div class="about-stats">
+          <!-- Ĺ tatistika poÄŤtu projektov -->
           <div class="stat-box">
             <div class="stat-number">3+</div>
             <div class="stat-label">Projekty</div>
           </div>
+          <!-- Ĺ tatistika rokov uÄŤenia -->
           <div class="stat-box">
-            <div class="stat-number">1+</div>
-            <div class="stat-label">Rok učenia</div>
+            <div class="stat-number">3+</div>
+            <div class="stat-label">Rok uÄŤenia</div>
           </div>
+          <!-- Ĺ tatistika poÄŤtu technolĂłgiĂ­ -->
           <div class="stat-box">
             <div class="stat-number">5+</div>
-            <div class="stat-label">Technológie</div>
+            <div class="stat-label">TechnolĂłgie</div>
           </div>
+          <!-- Ĺ tatistika vypitĂ˝ch kĂˇv (ĹľartovnĂˇ) -->
           <div class="stat-box">
-            <div class="stat-number">∞</div>
-            <div class="stat-label">Káv vypitých</div>
+            <div class="stat-number">âž</div>
+            <div class="stat-label">KĂˇv vypitĂ˝ch</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ZRUČNOSTI -->
+    <!-- ZRUÄŚNOSTI - Sekcia so zruÄŤnosĹĄami autora -->
     <section class="skills" id="skills">
-      <h2 class="section-title">Zručnosti</h2>
+      <!-- SECTION TITLE - Nadpis sekcie -->
+      <h2 class="section-title">ZruÄŤnosti</h2>
 
+      <!-- SKILLS CATEGORY - KategĂłria frontend zruÄŤnostĂ­ -->
       <div class="skills-category">
+        <!-- SKILL CATEGORY TITLE - Nadpis kategĂłrie -->
         <h3 class="skill-category-title">Frontend</h3>
+        <!-- SKILLS GRID - MrieĹľka s kartami zruÄŤnostĂ­ -->
         <div class="skills-grid">
+          <!-- SKILL CARD - Karta pre HTML -->
           <div class="skill-card">
-            <div class="skill-icon">🌐</div>
+            <!-- SKILL ICON - Ikona zruÄŤnosti -->
+            <div class="skill-icon">đźŚ</div>
             HTML
           </div>
+          <!-- SKILL CARD - Karta pre CSS -->
           <div class="skill-card">
-            <div class="skill-icon">🎨</div>
+            <div class="skill-icon">đźŽ¨</div>
             CSS
           </div>
+          <!-- SKILL CARD - Karta pre JavaScript -->
           <div class="skill-card">
-            <div class="skill-icon">⚡</div>
+            <div class="skill-icon">âšˇ</div>
             JavaScript
           </div>
         </div>
       </div>
 
+      <!-- SKILLS CATEGORY - KategĂłria backend zruÄŤnostĂ­ -->
       <div class="skills-category">
         <h3 class="skill-category-title">Backend</h3>
         <div class="skills-grid">
+          <!-- SKILL CARD - Karta pre Node.js -->
           <div class="skill-card">
-            <div class="skill-icon">🖥️</div>
+            <div class="skill-icon">đź–Ąď¸Ź</div>
             Node.js
           </div>
+          <!-- SKILL CARD - Karta pre MongoDB -->
           <div class="skill-card">
-            <div class="skill-icon">🗄️</div>
+            <div class="skill-icon">đź—„ď¸Ź</div>
             MongoDB
           </div>
         </div>
       </div>
 
+      <!-- SKILLS CATEGORY - KategĂłria nĂˇstrojov -->
       <div class="skills-category">
-        <h3 class="skill-category-title">Nástroje</h3>
+        <h3 class="skill-category-title">NĂˇstroje</h3>
         <div class="skills-grid">
+          <!-- SKILL CARD - Karta pre Git -->
           <div class="skill-card">
-            <div class="skill-icon">🐱</div>
+            <div class="skill-icon">đź±</div>
             Git
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROJEKTY -->
+    <!-- PROJEKTY - Sekcia s ukĂˇĹľkami projektov -->
     <section class="projects" id="projects">
+      <!-- SECTION TITLE - Nadpis sekcie -->
       <h2 class="section-title">Projekty</h2>
+      <!-- PROJECTS GRID - MrieĹľka s kartami projektov -->
       <div class="projects-grid">
+        <!-- PROJECT CARD - Karta prvĂ©ho projektu -->
         <div class="project-card">
-          <div class="project-img">🌤️</div>
+          <!-- PROJECT IMG - ObrĂˇzok alebo ikona projektu -->
+          <div class="project-img">đźŚ¤ď¸Ź</div>
+          <!-- PROJECT INFO - InformĂˇcie o projekte -->
           <div class="project-info">
-            <h3>Weather App</h3>
+            <!-- NĂˇzov projektu -->
+            <h3>Atmos Weather Dashboard</h3>
+            <!-- Popis projektu -->
             <p>
-              Aplikácia ktorá zobrazuje počasie podľa mesta pomocou
-              OpenWeatherMap API.
+              Portfolio-grade weather dashboard so secure Node proxy backendom,
+              forecastom, geolokĂˇciou, autocomplete searchom a vlastnĂ˝mi SVG ikonami.
             </p>
+            <!-- PROJECT TAGS - TechnolĂłgie pouĹľitĂ© v projekte -->
             <div class="project-tags">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Node.js</span>
             </div>
+            <!-- PROJECT LINKS - Odkazy na demo a GitHub -->
             <div class="project-links">
-              <a href="#" class="btn-small">Live demo</a>
-              <a href="#" class="btn-small btn-outline">GitHub</a>
+              <!-- TlaÄŤidlo na live demo -->
+              <a href="https://your-atmos-demo.onrender.com" class="btn-small" target="_blank" rel="noopener noreferrer">Live demo</a>
+              <!-- TlaÄŤidlo na GitHub -->
+              <a href="https://github.com/FilipGlemba/Portfolio/tree/main/projects/atmos" class="btn-small btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
           </div>
         </div>
 
+        <!-- PROJECT CARD - Karta druhĂ©ho projektu -->
         <div class="project-card">
-          <div class="project-img">✅</div>
+          <div class="project-img">âś…</div>
           <div class="project-info">
             <h3>Task Manager</h3>
             <p>
-              Todo aplikácia s filtrovaním, drag & drop a ukladaním do
+              Todo aplikĂˇcia s filtrovanĂ­m, drag & drop a ukladanĂ­m do
               localStorage.
             </p>
             <div class="project-tags">
@@ -186,11 +254,12 @@
           </div>
         </div>
 
+        <!-- PROJECT CARD - Karta tretieho projektu -->
         <div class="project-card">
-          <div class="project-img">🛒</div>
+          <div class="project-img">đź›’</div>
           <div class="project-info">
             <h3>Fullstack E-shop</h3>
-            <p>E-shop s backendom, databázou a prihlásením užívateľov.</p>
+            <p>E-shop s backendom, databĂˇzou a prihlĂˇsenĂ­m uĹľĂ­vateÄľov.</p>
             <div class="project-tags">
               <span>Node.js</span><span>Express</span><span>MongoDB</span>
             </div>
@@ -203,81 +272,101 @@
       </div>
     </section>
 
-    <!-- TIMELINE -->
+    <!-- TIMELINE - Sekcia s ÄŤasovou osou skĂşsenostĂ­ -->
     <section class="timeline-section" id="timeline">
-      <h2 class="section-title">Skúsenosti</h2>
+      <!-- SECTION TITLE - Nadpis sekcie -->
+      <h2 class="section-title">SkĂşsenosti</h2>
+      <!-- TIMELINE - Kontajner pre ÄŤasovĂş os -->
       <div class="timeline">
+        <!-- TIMELINE ITEM - PrvĂˇ poloĹľka na ÄŤasovej osi -->
         <div class="timeline-item">
+          <!-- TIMELINE DOT - Bod na ÄŤasovej osi -->
           <div class="timeline-dot"></div>
-          <span class="timeline-date">2025 — dnes</span>
+          <!-- TIMELINE DATE - DĂˇtum poloĹľky -->
+          <span class="timeline-date">2025 â€” dnes</span>
+          <!-- TIMELINE CONTENT - Obsah poloĹľky -->
           <div class="timeline-content">
-            <h3>SSOSTA — Stredná škola</h3>
+            <!-- NĂˇzov skĂşsenosti -->
+            <h3>SSOSTA â€” StrednĂˇ Ĺˇkola</h3>
+            <!-- Popis skĂşsenosti -->
             <p>
-              Nastúpil som na SSOSTA kde sa naplno venujem IT a web
-              developmentu. Aktívne budujem projekty, prehlbujem znalosti
+              NastĂşpil som na SSOSTA kde sa naplno venujem IT a web
+              developmentu. AktĂ­vne budujem projekty, prehlbujem znalosti
               JavaScriptu a smerujem k fullstack developmentu.
             </p>
           </div>
         </div>
 
+        <!-- TIMELINE ITEM - DruhĂˇ poloĹľka -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <span class="timeline-date">Leto 2024</span>
           <div class="timeline-content">
-            <h3>Kurz web developmentu — Bratislava</h3>
+            <h3>Kurz web developmentu â€” Bratislava</h3>
             <p>
-              Absolvoval som intenzívny kurz priamo v Bratislave, kde som si
-              upevnil základy HTML a CSS a prvýkrát sa stretol so štruktúrovaným
-              prístupom ku kódovaniu.
+              Absolvoval som intenzĂ­vny kurz priamo v Bratislave, kde som si
+              upevnil zĂˇklady HTML a CSS a prvĂ˝krĂˇt sa stretol so ĹˇtruktĂşrovanĂ˝m
+              prĂ­stupom ku kĂłdovaniu.
             </p>
           </div>
         </div>
 
+        <!-- TIMELINE ITEM - Tretia poloĹľka -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <span class="timeline-date">Začiatok 2024</span>
+          <span class="timeline-date">ZaÄŤiatok 2024</span>
           <div class="timeline-content">
-            <h3>Prvý kontakt s HTML & CSS</h3>
+            <h3>PrvĂ˝ kontakt s HTML & CSS</h3>
             <p>
-              Z vlastnej zvedavosti som začal skúmať ako fungujú weby. Prvé
-              riadky HTML, prvé štýly v CSS — a okamžite som vedel, že toto je
-              to pravé.
+              Z vlastnej zvedavosti som zaÄŤal skĂşmaĹĄ ako fungujĂş weby. PrvĂ©
+              riadky HTML, prvĂ© ĹˇtĂ˝ly v CSS â€” a okamĹľite som vedel, Ĺľe toto je
+              to pravĂ©.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- KONTAKT -->
-    <!-- DÔLEŽITÉ: Zmeň YOUR_FORM_ID na svoj ID z formspree.io -->
+    <!-- KONTAKT - Sekcia s kontaktnĂ˝m formulĂˇrom -->
+    <!-- DĂ”LEĹ˝ITĂ‰: ZmeĹ YOUR_FORM_ID na svoj ID z formspree.io -->
     <section class="contact" id="contact">
+      <!-- SECTION TITLE - Nadpis sekcie -->
       <h2 class="section-title">Kontakt</h2>
+      <!-- CONTACT INNER - Kontajner pre obsah sekcie -->
       <div class="contact-inner">
+        <!-- CONTACT INFO - InformĂˇcie o kontakte -->
         <div class="contact-info">
+          <!-- Popis kontaktnej sekcie -->
           <p>
-            Máš projekt, otázku alebo len chceš povedať ahoj? Napíš mi —
-            zvyčajne odpisujem do 24 hodín.
+            MĂˇĹˇ projekt, otĂˇzku alebo len chceĹˇ povedaĹĄ ahoj? NapĂ­Ĺˇ mi â€”
+            zvyÄŤajne odpisujem do 24 hodĂ­n.
           </p>
+          <!-- CONTACT LINKS - Odkazy na sociĂˇlne siete a email -->
           <div class="contact-links">
+            <!-- Odkaz na email -->
             <a href="mailto:tvoj@email.com" class="contact-link">
-              <span class="contact-link-icon">✉️</span>tvoj@email.com
+              <!-- Ikona emailu -->
+              <span class="contact-link-icon">âś‰ď¸Ź</span>tvoj@email.com
             </a>
+            <!-- Odkaz na GitHub -->
             <a href="https://github.com" target="_blank" class="contact-link">
-              <span class="contact-link-icon">🐱</span>github.com/tvojeusername
+              <span class="contact-link-icon">đź±</span>github.com/tvojeusername
             </a>
+            <!-- Odkaz na LinkedIn -->
             <a href="https://linkedin.com" target="_blank" class="contact-link">
-              <span class="contact-link-icon">💼</span
+              <span class="contact-link-icon">đź’Ľ</span
               >linkedin.com/in/tvojprofil
             </a>
           </div>
         </div>
+        <!-- CONTACT FORM - KontaktnĂ˝ formulĂˇr -->
         <form
           class="contact-form"
           id="contactForm"
           action="https://formspree.io/f/xwvwpaee"
           method="POST"
         >
-          <!-- Honeypot pre boty (neviditeľné pre ľudí) -->
+          <!-- Honeypot pre boty (neviditeÄľnĂ© pre ÄľudĂ­) - SlĂşĹľi na detekciu spamu -->
           <input
             type="text"
             name="_gotcha"
@@ -292,6 +381,7 @@
             "
           />
 
+          <!-- INPUT pre meno -->
           <input
             type="text"
             name="name"
@@ -299,6 +389,7 @@
             required
             maxlength="50"
           />
+          <!-- INPUT pre email -->
           <input
             type="email"
             name="email"
@@ -306,27 +397,32 @@
             required
             maxlength="100"
           />
+          <!-- TEXTAREA pre sprĂˇvu -->
           <textarea
             name="message"
-            placeholder="Správa..."
+            placeholder="SprĂˇva..."
             rows="5"
             required
             maxlength="1000"
           ></textarea>
-          <!-- reCAPTCHA -->
+          <!-- reCAPTCHA - Antispam ochrana -->
           <div
             class="g-recaptcha"
             data-sitekey="6LcjT5osAAAAAM5bRwfbeSJrkcmV557DIOWjcmu_"
           ></div>
-          <button type="submit" class="btn">Odoslať</button>
+          <!-- TlaÄŤidlo na odoslanie -->
+          <button type="submit" class="btn">OdoslaĹĄ</button>
         </form>
       </div>
     </section>
 
+    <!-- FOOTER - PĂ¤ta strĂˇnky -->
     <footer>
-      <p>Vytvorené s ❤️ a ☕ — Filip Glemba © 2025</p>
+      <!-- Text v pĂ¤te -->
+      <p>VytvorenĂ© s âť¤ď¸Ź a â• â€” Filip Glemba Â© 2025</p>
     </footer>
 
+    <!-- SCRIPT - NaÄŤĂ­ta JavaScript sĂşbor -->
     <script src="script.js"></script>
   </body>
 </html>

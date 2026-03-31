@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="atmosGradient" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF5CA8" />
+      <stop offset="1" stop-color="#FF8A5B" />
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="18" fill="#0B0B0D" />
+  <rect x="8" y="8" width="48" height="48" rx="15" fill="url(#atmosGradient)" />
+  <path
+    d="M22 44 30.5 20h4.2L43 44h-5.2l-1.7-5.2h-7.6L26.8 44H22Zm7.8-9.5H35l-2.6-8.3-2.6 8.3Z"
+    fill="#111111"
+  />
+</svg>

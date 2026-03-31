@@ -1,0 +1,11 @@
+﻿services:
+  - type: web
+    name: atmos-weather-experience
+    runtime: node
+    rootDir: projects/atmos
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: OPENWEATHER_API_KEY
+        sync: false

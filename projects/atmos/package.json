@@ -1,0 +1,10 @@
+﻿{
+  "name": "atmos-weather-experience",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio-grade weather dashboard with secure backend proxy and custom UI.",
+  "scripts": {
+    "start": "node server.js",
+    "start:win": "C:\\Progra~1\\nodejs\\node.exe server.js"
+  }
+}

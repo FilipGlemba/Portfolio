@@ -1,754 +1,862 @@
 /* ===== RESET & PREMENNÉ ===== */
+/* RESET - Resetuje všetky margin, padding a nastavuje box-sizing */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0; /* Odstráni všetky margin */
+  padding: 0; /* Odstráni všetky padding */
+  box-sizing: border-box; /* Zahŕňa padding a border do šírky/výšky */
 }
 
+/* ROOT - Definuje CSS premenné pre tmavú tému */
 :root {
-  --bg: #080810;
-  --bg-card: #0f0f1a;
-  --accent: #7c6dfa;
-  --accent-hover: #9b8ffb;
-  --accent-glow: rgba(124, 109, 250, 0.25);
-  --text: #eeeef5;
-  --text-muted: #777799;
-  --border: #1e1e32;
+  --bg: #080810; /* Pozadie stránky */
+  --bg-card: #0f0f1a; /* Pozadie kariet */
+  --accent: #7c6dfa; /* Hlavná farba */
+  --accent-hover: #9b8ffb; /* Hover farba */
+  --accent-glow: rgba(124, 109, 250, 0.25); /* Glow efekt */
+  --text: #eeeef5; /* Farba textu */
+  --text-muted: #777799; /* Tlmená farba textu */
+  --border: #1e1e32; /* Farba rámčekov */
 }
 
+/* DATA THEME LIGHT - Premenné pre svetlú tému */
 [data-theme="light"] {
-  --bg: #f5f5fa;
-  --bg-card: #ffffff;
-  --accent: #6c5ce7;
-  --accent-hover: #7c6dfa;
-  --accent-glow: rgba(108, 92, 231, 0.2);
-  --text: #1a1a2e;
-  --text-muted: #666688;
-  --border: #ddddef;
+  --bg: #f5f5fa; /* Svetlé pozadie */
+  --bg-card: #ffffff; /* Biele karty */
+  --accent: #6c5ce7; /* Tmavšia akcent farba */
+  --accent-hover: #7c6dfa; /* Hover farba */
+  --accent-glow: rgba(108, 92, 231, 0.2); /* Jemnejší glow */
+  --text: #1a1a2e; /* Tmavý text */
+  --text-muted: #666688; /* Tlmený tmavý text */
+  --border: #ddddef; /* Svetlý rámček */
 }
 
+/* HTML - Nastavuje plynulé skrolovanie */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Plynulé skrolovanie */
 }
 
+/* BODY - Štýly pre telo stránky */
 body {
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
-  cursor: none;
-  transition: background 0.4s, color 0.4s;
+  background-color: var(--bg); /* Pozadie z premennej */
+  color: var(--text); /* Farba textu z premennej */
+  font-family: 'DM Sans', sans-serif; /* Vlastný font */
+  line-height: 1.6; /* Výška riadku */
+  overflow-x: hidden; /* Skryje horizontálne skrolovanie */
+  cursor: none; /* Skryje štandardný kurzor */
+  transition: background 0.4s, color 0.4s; /* Prechod pre tému */
 }
 
 /* ===== LOADING SCREEN ===== */
+/* LOADER - Kontajner pre loading screen */
 .loader {
-  position: fixed;
-  inset: 0;
-  background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  position: fixed; /* Fixná pozícia */
+  inset: 0; /* Celá obrazovka */
+  background: var(--bg); /* Pozadie z premennej */
+  display: flex; /* Flexbox layout */
+  align-items: center; /* Vertikálne zarovnanie na stred */
+  justify-content: center; /* Horizontálne zarovnanie na stred */
+  z-index: 9999; /* Najvyšší z-index */
+  transition: opacity 0.5s ease, visibility 0.5s ease; /* Prechod pre skrytie */
 }
 
+/* LOADER HIDDEN - Skryje loading screen */
 .loader.hidden {
-  opacity: 0;
-  visibility: hidden;
+  opacity: 0; /* Neviditeľné */
+  visibility: hidden; /* Skryté */
 }
 
+/* LOADER INNER - Vnútorný kontajner loading screen */
 .loader-inner {
-  text-align: center;
+  text-align: center; /* Zarovnanie textu na stred */
 }
 
+/* LOADER LOGO - Štýl pre logo v loading screen */
 .loader-logo {
-  font-family: 'Syne', sans-serif;
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
-  animation: pulse 1s ease infinite;
+  font-family: 'Syne', sans-serif; /* Vlastný font */
+  font-size: 3rem; /* Veľkosť fontu */
+  font-weight: 800; /* Hrúbka fontu */
+  color: var(--accent); /* Farba z premennej */
+  margin-bottom: 1.5rem; /* Spodný margin */
+  animation: pulse 1s ease infinite; /* Pulzujúca animácia */
 }
 
+/* LOADER BAR - Kontajner pre progress bar */
 .loader-bar {
-  width: 200px;
-  height: 3px;
-  background: var(--border);
-  border-radius: 3px;
-  overflow: hidden;
+  width: 200px; /* Šírka baru */
+  height: 3px; /* Výška baru */
+  background: var(--border); /* Pozadie z premennej */
+  border-radius: 3px; /* Zaoblenie rohov */
+  overflow: hidden; /* Skryje pretekajúci obsah */
 }
 
+/* LOADER FILL - Vyplňovanie progress baru */
 .loader-fill {
-  height: 100%;
-  background: var(--accent);
-  border-radius: 3px;
-  animation: loadFill 1.8s ease forwards;
+  height: 100%; /* Plná výška */
+  background: var(--accent); /* Farba z premennej */
+  border-radius: 3px; /* Zaoblenie */
+  animation: loadFill 1.8s ease forwards; /* Animácia vyplňovania */
 }
 
+/* KEYFRAMES LOAD FILL - Animácia vyplňovania */
 @keyframes loadFill {
-  from { width: 0%; }
-  to   { width: 100%; }
+  from { width: 0%; } /* Počiatočná šírka */
+  to   { width: 100%; } /* Konečná šírka */
 }
 
+/* KEYFRAMES PULSE - Animácia pulzovania */
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.5; }
+  0%, 100% { opacity: 1; } /* Plná viditeľnosť */
+  50%       { opacity: 0.5; } /* Polovičná viditeľnosť */
 }
 
 /* ===== CUSTOM CURSOR ===== */
+/* CURSOR - Vlastný kurzor (väčší kruh) */
 .cursor {
-  position: fixed;
-  width: 36px;
-  height: 36px;
-  border: 2px solid var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transition: transform 0.15s ease, opacity 0.3s;
-  transform: translate(-50%, -50%);
+  position: fixed; /* Fixná pozícia */
+  width: 36px; /* Šírka kurzora */
+  height: 36px; /* Výška kurzora */
+  border: 2px solid var(--accent); /* Rámček z premennej */
+  border-radius: 50%; /* Kruh */
+  pointer-events: none; /* Nezachytáva kliknutia */
+  z-index: 9998; /* Vysoký z-index */
+  transition: transform 0.15s ease, opacity 0.3s; /* Prechod pre transform a opacity */
+  transform: translate(-50%, -50%); /* Centrovanie */
 }
 
+/* CURSOR DOT - Malý bod v strede kurzora */
 .cursor-dot {
-  position: fixed;
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
+  position: fixed; /* Fixná pozícia */
+  width: 6px; /* Šírka bodu */
+  height: 6px; /* Výška bodu */
+  background: var(--accent); /* Pozadie z premennej */
+  border-radius: 50%; /* Kruh */
+  pointer-events: none; /* Nezachytáva kliknutia */
+  z-index: 9998; /* Vysoký z-index */
+  transform: translate(-50%, -50%); /* Centrovanie */
 }
 
+/* CURSOR EXPAND - Zväčší kurzor pri hoveri */
 .cursor.expand {
-  transform: translate(-50%, -50%) scale(1.8);
-  opacity: 0.5;
+  transform: translate(-50%, -50%) scale(1.8); /* Zväčšenie a centrovanie */
+  opacity: 0.5; /* Polovičná viditeľnosť */
 }
 
 /* ===== PARTICLES ===== */
+/* PARTICLES - Canvas pre animované častice */
 #particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.5;
+  position: fixed; /* Fixná pozícia */
+  top: 0; /* Hore */
+  left: 0; /* Vľavo */
+  width: 100%; /* Plná šírka */
+  height: 100%; /* Plná výška */
+  pointer-events: none; /* Nezachytáva kliknutia */
+  z-index: 0; /* Pozadie */
+  opacity: 0.5; /* Polovičná viditeľnosť */
 }
 
 /* ===== NAVIGÁCIA ===== */
+/* NAVBAR - Hlavná navigačná lišta */
 .navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 8%;
-  background: rgba(8, 8, 16, 0.85);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
-  z-index: 1000;
-  transition: border-color 0.3s, background 0.4s;
+  position: fixed; /* Fixná pozícia */
+  top: 0; /* Hore */
+  width: 100%; /* Plná šírka */
+  display: flex; /* Flexbox */
+  justify-content: space-between; /* Rozdelenie priestoru */
+  align-items: center; /* Vertikálne zarovnanie */
+  padding: 1.2rem 8%; /* Padding */
+  background: rgba(8, 8, 16, 0.85); /* Polopriehľadné pozadie */
+  backdrop-filter: blur(14px); /* Rozmazanie pozadia */
+  border-bottom: 1px solid var(--border); /* Spodný rámček */
+  z-index: 1000; /* Vysoký z-index */
+  transition: border-color 0.3s, background 0.4s; /* Prechod */
 }
 
+/* DATA THEME LIGHT NAVBAR - Štýl navbara pre svetlú tému */
 [data-theme="light"] .navbar {
-  background: rgba(245, 245, 250, 0.85);
+  background: rgba(245, 245, 250, 0.85); /* Svetlé polopriehľadné pozadie */
 }
 
+/* LOGO - Štýl pre logo v navigácii */
 .logo {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--accent);
-  letter-spacing: 1px;
+  font-family: 'Syne', sans-serif; /* Vlastný font */
+  font-size: 1.3rem; /* Veľkosť */
+  font-weight: 800; /* Hrúbka */
+  color: var(--accent); /* Farba z premennej */
+  letter-spacing: 1px; /* Rozostup písmen */
 }
 
+/* NAV LINKS - Zoznam navigačných odkazov */
 .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
+  list-style: none; /* Bez bodov */
+  display: flex; /* Flexbox */
+  gap: 2rem; /* Medzera medzi odkazmi */
 }
 
+/* NAV LINKS A - Štýl pre odkazy v navigácii */
 .nav-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: color 0.3s;
-  position: relative;
+  color: var(--text-muted); /* Tlmená farba */
+  text-decoration: none; /* Bez podčiarknutia */
+  font-size: 0.9rem; /* Veľkosť */
+  font-weight: 500; /* Hrúbka */
+  transition: color 0.3s; /* Prechod farby */
+  position: relative; /* Pre pseudo-element */
 }
 
+/* NAV LINKS A AFTER - Podčiarknutie pod odkazy */
 .nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  border-radius: 2px;
-  transition: width 0.3s;
+  content: ''; /* Prázdny obsah */
+  position: absolute; /* Absolútne pozicionovanie */
+  bottom: -4px; /* Pod textom */
+  left: 0; /* Vľavo */
+  width: 0; /* Počiatočná šírka */
+  height: 2px; /* Výška čiary */
+  background: var(--accent); /* Farba z premennej */
+  border-radius: 2px; /* Zaoblenie */
+  transition: width 0.3s; /* Prechod šírky */
 }
 
+/* NAV LINKS A HOVER - Hover efekt pre odkazy */
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--text);
+  color: var(--text); /* Zmena farby */
 }
 
+/* NAV LINKS A HOVER AFTER - Zobrazenie podčiarknutia pri hoveri */
 .nav-links a:hover::after,
 .nav-links a.active::after {
-  width: 100%;
+  width: 100%; /* Plná šírka */
 }
 
-/* Nav right buttons */
+/* NAV RIGHT - Pravá strana navigačnej lišty */
 .nav-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  display: flex; /* Flexbox */
+  align-items: center; /* Zarovnanie */
+  gap: 1rem; /* Medzera */
 }
 
+/* THEME TOGGLE - Tlačidlo na prepnutie témy */
 .theme-toggle {
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.4rem 0.6rem;
-  font-size: 1rem;
-  cursor: none;
-  transition: border-color 0.3s;
+  background: none; /* Bez pozadia */
+  border: 1px solid var(--border); /* Rámček */
+  border-radius: 8px; /* Zaoblenie */
+  padding: 0.4rem 0.6rem; /* Padding */
+  font-size: 1rem; /* Veľkosť */
+  cursor: none; /* Vlastný kurzor */
+  transition: border-color 0.3s; /* Prechod */
 }
 
+/* THEME TOGGLE HOVER - Hover efekt pre tlačidlo témy */
 .theme-toggle:hover {
-  border-color: var(--accent);
+  border-color: var(--accent); /* Zmena farby rámčeka */
 }
 
 /* ===== HAMBURGER ===== */
+/* HAMBURGER - Tlačidlo pre mobilné menu */
 .hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: none;
-  padding: 4px;
+  display: none; /* Skryté na desktop */
+  flex-direction: column; /* Vertikálne */
+  gap: 5px; /* Medzera medzi čiarami */
+  background: none; /* Bez pozadia */
+  border: none; /* Bez rámčeka */
+  cursor: none; /* Vlastný kurzor */
+  padding: 4px; /* Padding */
 }
 
+/* HAMBURGER SPAN - Čiary v hamburger menu */
 .hamburger span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--text);
-  border-radius: 2px;
-  transition: transform 0.3s, opacity 0.3s;
+  display: block; /* Blokový element */
+  width: 24px; /* Šírka čiary */
+  height: 2px; /* Výška čiary */
+  background: var(--text); /* Farba z premennej */
+  border-radius: 2px; /* Zaoblenie */
+  transition: transform 0.3s, opacity 0.3s; /* Prechod */
 }
 
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* HAMBURGER OPEN SPAN - Animácia pre otvorené menu */
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); } /* Prvá čiara */
+.hamburger.open span:nth-child(2) { opacity: 0; } /* Druhá čiara neviditeľná */
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); } /* Tretia čiara */
 
 /* ===== HERO ===== */
+/* HERO - Úvodná sekcia stránky */
 .hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 2rem;
-  position: relative;
-  z-index: 1;
+  min-height: 100vh; /* Minimálna výška celej obrazovky */
+  display: flex; /* Flexbox */
+  align-items: center; /* Vertikálne zarovnanie */
+  justify-content: center; /* Horizontálne zarovnanie */
+  text-align: center; /* Zarovnanie textu */
+  padding: 0 2rem; /* Horizontálny padding */
+  position: relative; /* Pre pseudo-element */
+  z-index: 1; /* Nad pozadím */
 }
 
+/* HERO BEFORE - Dekoratívny gradient v pozadí hero sekcie */
 .hero::before {
-  content: '';
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(124, 109, 250, 0.1) 0%, transparent 70%);
-  pointer-events: none;
+  content: ''; /* Prázdny obsah */
+  position: absolute; /* Absolútne pozicionovanie */
+  top: 20%; /* 20% od hora */
+  left: 50%; /* 50% od ľava */
+  transform: translateX(-50%); /* Centrovanie horizontálne */
+  width: 600px; /* Šírka */
+  height: 600px; /* Výška */
+  background: radial-gradient(circle, rgba(124, 109, 250, 0.1) 0%, transparent 70%); /* Radiálny gradient */
+  pointer-events: none; /* Nezachytáva kliknutia */
 }
 
+/* HERO CONTENT - Obsah hero sekcie */
 .hero-content {
-  position: relative;
-  z-index: 1;
+  position: relative; /* Relatívne pozicionovanie */
+  z-index: 1; /* Nad dekoráciou */
 }
 
+/* HERO GREETING - Pozdrav v hero sekcii */
 .hero-greeting {
-  color: var(--accent);
-  font-size: 0.95rem;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  font-weight: 500;
-  opacity: 0;
-  animation: fadeUp 0.6s ease forwards 0.2s;
+  color: var(--accent); /* Farba z premennej */
+  font-size: 0.95rem; /* Veľkosť */
+  letter-spacing: 4px; /* Rozostup písmen */
+  text-transform: uppercase; /* Veľké písmená */
+  font-weight: 500; /* Hrúbka */
+  opacity: 0; /* Počiatočná neviditeľnosť */
+  animation: fadeUp 0.6s ease forwards 0.2s; /* Animácia s oneskorením */
 }
 
+/* HERO NAME - Meno autora v hero sekcii */
 .hero-name {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(3rem, 9vw, 6rem);
-  font-weight: 800;
-  margin: 0.3rem 0;
-  line-height: 1.05;
-  opacity: 0;
-  animation: fadeUp 0.6s ease forwards 0.5s;
+  font-family: 'Syne', sans-serif; /* Vlastný font */
+  font-size: clamp(3rem, 9vw, 6rem); /* Dynamická veľkosť fontu */
+  font-weight: 800; /* Hrúbka */
+  margin: 0.3rem 0; /* Vertikálny margin */
+  line-height: 1.05; /* Výška riadku */
+  opacity: 0; /* Počiatočná neviditeľnosť */
+  animation: fadeUp 0.6s ease forwards 0.5s; /* Animácia s oneskorením */
 }
 
+/* HERO ROLE - Role alebo titul s typing animáciou */
 .hero-role {
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  color: var(--text-muted);
-  font-weight: 300;
-  margin-bottom: 2.5rem;
-  min-height: 2rem;
-  opacity: 0;
-  animation: fadeUp 0.6s ease forwards 0.8s;
+  font-size: clamp(1rem, 2.5vw, 1.4rem); /* Dynamická veľkosť */
+  color: var(--text-muted); /* Tlmená farba */
+  font-weight: 300; /* Tenká hrúbka */
+  margin-bottom: 2.5rem; /* Spodný margin */
+  min-height: 2rem; /* Minimálna výška */
+  opacity: 0; /* Počiatočná neviditeľnosť */
+  animation: fadeUp 0.6s ease forwards 0.8s; /* Animácia s oneskorením */
 }
 
+/* CURSOR BLINK - Blikajúci kurzor v typing animácii */
 .cursor-blink {
-  color: var(--accent);
-  animation: blink 0.8s step-end infinite;
+  color: var(--accent); /* Farba kurzora */
+  animation: blink 0.8s step-end infinite; /* Blikajúca animácia */
 }
 
+/* KEYFRAMES BLINK - Animácia blikania kurzora */
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+  0%, 100% { opacity: 1; } /* Viditeľný */
+  50%       { opacity: 0; } /* Neviditeľný */
 }
 
+/* HERO BTNS - Tlačidlá v hero sekcii */
 .hero-btns {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeUp 0.6s ease forwards 1.1s;
+  display: flex; /* Flexbox */
+  gap: 1rem; /* Medzera */
+  justify-content: center; /* Horizontálne zarovnanie */
+  flex-wrap: wrap; /* Zalamovanie */
+  opacity: 0; /* Počiatočná neviditeľnosť */
+  animation: fadeUp 0.6s ease forwards 1.1s; /* Animácia s oneskorením */
 }
 
 /* ===== TLAČIDLÁ ===== */
+/* BTN - Štýl pre hlavné tlačidlá */
 .btn {
-  display: inline-block;
-  padding: 0.85rem 2.2rem;
-  background: var(--accent);
-  color: #fff;
-  text-decoration: none;
-  border: none;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  cursor: none;
-  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  display: inline-block; /* Inline-block */
+  padding: 0.85rem 2.2rem; /* Padding */
+  background: var(--accent); /* Pozadie z premennej */
+  color: #fff; /* Biela farba */
+  text-decoration: none; /* Bez podčiarknutia */
+  border: none; /* Bez rámčeka */
+  border-radius: 8px; /* Zaoblenie */
+  font-size: 0.95rem; /* Veľkosť */
+  font-family: 'DM Sans', sans-serif; /* Font */
+  font-weight: 500; /* Hrúbka */
+  cursor: none; /* Vlastný kurzor */
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s; /* Prechody */
 }
 
+/* BTN HOVER - Hover efekt pre tlačidlá */
 .btn:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px var(--accent-glow);
+  background: var(--accent-hover); /* Tmavšie pozadie */
+  transform: translateY(-2px); /* Posun hore */
+  box-shadow: 0 8px 25px var(--accent-glow); /* Tieň */
 }
 
+/* BTN GHOST - Štýl pre priehľadné tlačidlá */
 .btn-ghost {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
+  background: transparent; /* Priehľadné pozadie */
+  border: 1px solid var(--border); /* Rámček */
+  color: var(--text-muted); /* Tlmená farba */
 }
 
+/* BTN GHOST HOVER - Hover efekt pre priehľadné tlačidlá */
 .btn-ghost:hover {
-  border-color: var(--accent);
-  color: var(--text);
-  background: transparent;
-  box-shadow: none;
+  border-color: var(--accent); /* Zmena rámčeka */
+  color: var(--text); /* Zmena farby */
+  background: transparent; /* Stále priehľadné */
+  box-shadow: none; /* Bez tieňa */
 }
 
 /* ===== SEKCIE ===== */
+/* SECTION - Štýly pre všetky sekcie stránky */
 section {
-  padding: 6rem 8%;
-  position: relative;
-  z-index: 1;
+  padding: 6rem 8%; /* Vertikálny padding 6rem, horizontálny 8% */
+  position: relative; /* Relatívne pozicionovanie pre z-index */
+  z-index: 1; /* Nad pozadím */
 }
 
+/* SECTION TITLE - Štýl pre nadpisy sekcií */
 .section-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
-  margin-bottom: 3rem;
-  position: relative;
-  display: inline-block;
+  font-family: 'Syne', sans-serif; /* Použitie vlastného fontu */
+  font-size: 2rem; /* Veľkosť fontu */
+  font-weight: 800; /* Hrúbka fontu */
+  margin-bottom: 3rem; /* Spodný margin */
+  position: relative; /* Pre pseudo-element */
+  display: inline-block; /* Inline-block pre šírku */
 }
 
+/* SECTION TITLE AFTER - Podčiarknutie pod nadpisom */
 .section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 40%;
-  height: 3px;
-  background: var(--accent);
-  border-radius: 2px;
+  content: ''; /* Prázdny obsah pre pseudo-element */
+  position: absolute; /* Absolútne pozicionovanie */
+  bottom: -8px; /* 8px nad spodkom */
+  left: 0; /* Zarovnané vľavo */
+  width: 40%; /* Šírka 40% */
+  height: 3px; /* Výška čiary */
+  background: var(--accent); /* Farba z premennej */
+  border-radius: 2px; /* Zaoblenie rohov */
 }
 
 /* ===== O MNE ===== */
+/* ABOUT INNER - Kontajner pre obsah sekcie O mne */
 .about-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  max-width: 900px;
+  display: grid; /* CSS Grid layout */
+  grid-template-columns: 1fr 1fr; /* Dva stĺpce rovnakej šírky */
+  gap: 4rem; /* Medzera medzi stĺpcami */
+  align-items: center; /* Vertikálne zarovnanie na stred */
+  max-width: 900px; /* Maximálna šírka */
 }
 
+/* ABOUT P - Štýl pre odseky v sekcii O mne */
 .about p {
-  color: var(--text-muted);
-  font-size: 1.05rem;
-  line-height: 1.9;
-  margin-bottom: 1rem;
+  color: var(--text-muted); /* Tlmená farba textu */
+  font-size: 1.05rem; /* Veľkosť fontu */
+  line-height: 1.9; /* Výška riadku pre lepšiu čitateľnosť */
+  margin-bottom: 1rem; /* Spodný margin */
 }
 
+/* ABOUT STATS - Kontajner pre štatistiky */
 .about-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  display: grid; /* Grid layout */
+  grid-template-columns: 1fr 1fr; /* Dva stĺpce */
+  gap: 1rem; /* Medzera */
 }
 
+/* STAT BOX - Štýl pre boxy so štatistikami */
 .stat-box {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  transition: border-color 0.3s;
+  background: var(--bg-card); /* Pozadie z premennej */
+  border: 1px solid var(--border); /* Rámček */
+  border-radius: 12px; /* Zaoblenie rohov */
+  padding: 1.5rem; /* Vnútorný padding */
+  text-align: center; /* Zarovnanie textu na stred */
+  transition: border-color 0.3s; /* Prechod pre border-color */
 }
 
-.stat-box:hover { border-color: var(--accent); }
+/* STAT BOX HOVER - Hover efekt pre stat boxy */
+.stat-box:hover { border-color: var(--accent); /* Zmena farby rámčeka */ }
 
+/* STAT NUMBER - Štýl pre čísla v štatistikách */
 .stat-number {
-  font-family: 'Syne', sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--accent);
+  font-family: 'Syne', sans-serif; /* Vlastný font */
+  font-size: 2rem; /* Veľkosť */
+  font-weight: 800; /* Hrúbka */
+  color: var(--accent); /* Farba z premennej */
 }
 
+/* STAT LABEL - Štýl pre popisky štatistík */
 .stat-label {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin-top: 0.2rem;
+  font-size: 0.82rem; /* Menšia veľkosť */
+  color: var(--text-muted); /* Tlmená farba */
+  margin-top: 0.2rem; /* Horný margin */
 }
 
 /* ===== ZRUČNOSTI ===== */
+/* SKILLS GRID - Mriežka pre karty zručností */
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1rem;
-  max-width: 700px;
+  display: grid; /* Grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Automatické stĺpce s min šírkou 120px */
+  gap: 1rem; /* Medzera medzi kartami */
+  max-width: 700px; /* Max šírka */
 }
 
+/* SKILL CARD - Štýl pre karty zručností */
 .skill-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1.3rem 1rem;
-  text-align: center;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  background: var(--bg-card); /* Pozadie */
+  border: 1px solid var(--border); /* Rámček */
+  border-radius: 10px; /* Zaoblenie */
+  padding: 1.3rem 1rem; /* Padding */
+  text-align: center; /* Zarovnanie textu */
+  font-weight: 600; /* Hrúbka fontu */
+  font-size: 0.9rem; /* Veľkosť fontu */
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Prechody */
 }
 
+/* SKILL CARD HOVER - Hover efekt pre karty */
 .skill-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px var(--accent-glow);
+  border-color: var(--accent); /* Zmena farby rámčeka */
+  transform: translateY(-4px); /* Posun hore */
+  box-shadow: 0 8px 20px var(--accent-glow); /* Tieň */
 }
 
+/* SKILL ICON - Štýl pre ikony zručností */
 .skill-icon {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.8rem; /* Veľkosť ikony */
+  margin-bottom: 0.5rem; /* Spodný margin */
 }
 
 /* ===== PROJEKTY ===== */
+/* PROJECTS GRID - Mriežka pre karty projektov */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 1.5rem;
+  display: grid; /* Grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); /* Automatické stĺpce s min 290px */
+  gap: 1.5rem; /* Medzera */
 }
 
+/* PROJECT CARD - Štýl pre karty projektov */
 .project-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  background: var(--bg-card); /* Pozadie */
+  border: 1px solid var(--border); /* Rámček */
+  border-radius: 14px; /* Zaoblenie */
+  overflow: hidden; /* Skryje pretekajúci obsah */
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; /* Prechody */
 }
 
+/* PROJECT CARD HOVER - Hover efekt pre karty */
 .project-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent);
-  box-shadow: 0 12px 35px var(--accent-glow);
+  transform: translateY(-6px); /* Posun hore */
+  border-color: var(--accent); /* Zmena rámčeka */
+  box-shadow: 0 12px 35px var(--accent-glow); /* Tieň */
 }
 
+/* PROJECT IMG - Štýl pre obrázok projektu */
 .project-img {
-  background: linear-gradient(135deg, #0f0f20, #1a1a35);
-  font-size: 3.5rem;
-  text-align: center;
-  padding: 2.5rem;
+  background: linear-gradient(135deg, #0f0f20, #1a1a35); /* Lineárny gradient ako pozadie */
+  font-size: 3.5rem; /* Veľkosť emoji/ikony */
+  text-align: center; /* Zarovnanie na stred */
+  padding: 2.5rem; /* Padding */
 }
 
-.project-info { padding: 1.5rem; }
+/* PROJECT INFO - Kontajner pre informácie o projekte */
+.project-info { padding: 1.5rem; /* Padding */ }
 
+/* PROJECT INFO H3 - Štýl pre názov projektu */
 .project-info h3 {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+  font-family: 'Syne', sans-serif; /* Vlastný font */
+  font-size: 1.1rem; /* Veľkosť */
+  font-weight: 700; /* Hrúbka */
+  margin-bottom: 0.5rem; /* Spodný margin */
 }
 
+/* PROJECT INFO P - Štýl pre popis projektu */
 .project-info p {
-  color: var(--text-muted);
-  font-size: 0.88rem;
-  margin-bottom: 1.2rem;
-  line-height: 1.6;
+  color: var(--text-muted); /* Tlmená farba */
+  font-size: 0.88rem; /* Veľkosť */
+  margin-bottom: 1.2rem; /* Spodný margin */
+  line-height: 1.6; /* Výška riadku */
 }
 
+/* PROJECT TAGS - Kontajner pre tagy technológií */
 .project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 1.3rem;
+  display: flex; /* Flexbox */
+  flex-wrap: wrap; /* Zalamovanie */
+  gap: 0.4rem; /* Medzera */
+  margin-bottom: 1.3rem; /* Spodný margin */
 }
 
+/* PROJECT TAGS SPAN - Štýl pre jednotlivé tagy */
 .project-tags span {
-  background: rgba(124, 109, 250, 0.1);
-  border: 1px solid rgba(124, 109, 250, 0.25);
-  color: var(--accent);
-  padding: 0.2rem 0.7rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 500;
+  background: rgba(124, 109, 250, 0.1); /* Polopriehľadné pozadie */
+  border: 1px solid rgba(124, 109, 250, 0.25); /* Polopriehľadný rámček */
+  color: var(--accent); /* Farba textu */
+  padding: 0.2rem 0.7rem; /* Padding */
+  border-radius: 20px; /* Zaoblenie */
+  font-size: 0.75rem; /* Veľkosť */
+  font-weight: 500; /* Hrúbka */
 }
 
-.project-links { display: flex; gap: 0.7rem; }
+/* PROJECT LINKS - Kontajner pre odkazy projektu */
+.project-links { display: flex; gap: 0.7rem; /* Flex s medzerou */ }
 
+/* BTN SMALL - Štýl pre malé tlačidlá */
 .btn-small {
-  padding: 0.45rem 1rem;
-  background: var(--accent);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
-  font-size: 0.82rem;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  transition: background 0.3s, transform 0.2s;
+  padding: 0.45rem 1rem; /* Menší padding */
+  background: var(--accent); /* Pozadie */
+  color: #fff; /* Biela farba */
+  text-decoration: none; /* Bez podčiarknutia */
+  border-radius: 6px; /* Zaoblenie */
+  font-size: 0.82rem; /* Menšia veľkosť */
+  font-family: 'DM Sans', sans-serif; /* Font */
+  font-weight: 500; /* Hrúbka */
+  transition: background 0.3s, transform 0.2s; /* Prechody */
 }
 
+/* BTN SMALL HOVER - Hover efekt pre malé tlačidlá */
 .btn-small:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
+  background: var(--accent-hover); /* Tmavšie pozadie */
+  transform: translateY(-2px); /* Posun hore */
 }
 
+/* BTN OUTLINE - Štýl pre outline tlačidlá */
 .btn-outline {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
+  background: transparent; /* Priehľadné pozadie */
+  border: 1px solid var(--border); /* Rámček */
+  color: var(--text-muted); /* Tlmená farba */
 }
 
+/* BTN OUTLINE HOVER - Hover efekt pre outline tlačidlá */
 .btn-outline:hover {
-  border-color: var(--accent);
-  color: var(--text);
-  background: transparent;
+  border-color: var(--accent); /* Zmena rámčeka */
+  color: var(--text); /* Zmena farby textu */
+  background: transparent; /* Stále priehľadné */
 }
 
 /* ===== TIMELINE ===== */
+/* TIMELINE - Kontajner pre časovú os */
 .timeline {
-  position: relative;
-  max-width: 650px;
-  padding-left: 2rem;
+  position: relative; /* Pre pseudo-element */
+  max-width: 650px; /* Max šírka */
+  padding-left: 2rem; /* Ľavý padding pre čiary */
 }
 
+/* TIMELINE BEFORE - Vertikálna čiara časovej osi */
 .timeline::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
+  content: ''; /* Prázdny obsah */
+  position: absolute; /* Absolútne pozicionovanie */
+  left: 0; /* Vľavo */
+  top: 0; /* Hore */
+  bottom: 0; /* Dole */
+  width: 2px; /* Šírka čiary */
+  background: linear-gradient(to bottom, var(--accent), transparent); /* Gradient čiary */
 }
 
+/* TIMELINE ITEM - Jednotlivé položky časovej osi */
 .timeline-item {
-  position: relative;
-  margin-bottom: 2.5rem;
+  position: relative; /* Pre bodku */
+  margin-bottom: 2.5rem; /* Spodný margin */
 }
 
+/* TIMELINE DOT - Bodka na časovej osi */
 .timeline-dot {
-  position: absolute;
-  left: -2.45rem;
-  top: 0.3rem;
-  width: 14px;
-  height: 14px;
-  background: var(--accent);
-  border-radius: 50%;
-  border: 2px solid var(--bg);
-  box-shadow: 0 0 10px var(--accent-glow);
-  transition: transform 0.3s;
+  position: absolute; /* Absolútne */
+  left: -2.45rem; /* Pozícia vľavo od textu */
+  top: 0.3rem; /* Horná pozícia */
+  width: 14px; /* Šírka */
+  height: 14px; /* Výška */
+  background: var(--accent); /* Pozadie */
+  border-radius: 50%; /* Kruh */
+  border: 2px solid var(--bg); /* Rámček */
+  box-shadow: 0 0 10px var(--accent-glow); /* Tieň */
+  transition: transform 0.3s; /* Prechod */
 }
 
-.timeline-item:hover .timeline-dot { transform: scale(1.5); }
+/* TIMELINE ITEM HOVER TIMELINE DOT - Zväčšenie bodky pri hoveri */
+.timeline-item:hover .timeline-dot { transform: scale(1.5); /* Zväčšenie */ }
 
+/* TIMELINE DATE - Štýl pre dátumy */
 .timeline-date {
-  color: var(--accent);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  color: var(--accent); /* Farba */
+  font-size: 0.8rem; /* Veľkosť */
+  font-weight: 600; /* Hrúbka */
+  letter-spacing: 2px; /* Rozostup písmen */
+  text-transform: uppercase; /* Veľké písmená */
 }
 
+/* TIMELINE CONTENT - Obsah položky */
 .timeline-content {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1.2rem 1.5rem;
-  margin-top: 0.5rem;
-  transition: border-color 0.3s;
+  background: var(--bg-card); /* Pozadie */
+  border: 1px solid var(--border); /* Rámček */
+  border-radius: 10px; /* Zaoblenie */
+  padding: 1.2rem 1.5rem; /* Padding */
+  margin-top: 0.5rem; /* Horný margin */
+  transition: border-color 0.3s; /* Prechod */
 }
 
-.timeline-item:hover .timeline-content { border-color: var(--accent); }
+/* TIMELINE ITEM HOVER TIMELINE CONTENT - Zmena rámčeka pri hoveri */
+.timeline-item:hover .timeline-content { border-color: var(--accent); /* Zmena farby */ }
 
+/* TIMELINE CONTENT H3 - Štýl pre nadpisy v obsahu */
 .timeline-content h3 {
-  font-family: 'Syne', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 0.4rem;
+  font-family: 'Syne', sans-serif; /* Font */
+  font-size: 1rem; /* Veľkosť */
+  font-weight: 700; /* Hrúbka */
+  margin-bottom: 0.4rem; /* Spodný margin */
 }
 
+/* TIMELINE CONTENT P - Štýl pre text v obsahu */
 .timeline-content p {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  line-height: 1.7;
+  color: var(--text-muted); /* Tlmená farba */
+  font-size: 0.9rem; /* Veľkosť */
+  line-height: 1.7; /* Výška riadku */
 }
 
 /* ===== KONTAKT ===== */
+/* CONTACT INNER - Kontajner pre sekciu kontakt */
 .contact-inner {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 4rem;
-  max-width: 900px;
-  align-items: start;
+  display: grid; /* Grid layout */
+  grid-template-columns: 1fr 1.2fr; /* Dva stĺpce, druhý širší */
+  gap: 4rem; /* Medzera */
+  max-width: 900px; /* Max šírka */
+  align-items: start; /* Zarovnanie hore */
 }
 
+/* CONTACT INFO P - Štýl pre text v info sekcii */
 .contact-info p {
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-  line-height: 1.8;
+  color: var(--text-muted); /* Tlmená farba */
+  margin-bottom: 2rem; /* Spodný margin */
+  line-height: 1.8; /* Výška riadku */
 }
 
+/* CONTACT LINKS - Kontajner pre odkazy */
 .contact-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Vertikálne */
+  gap: 0.8rem; /* Medzera */
 }
 
+/* CONTACT LINK - Štýl pre jednotlivé odkazy */
 .contact-link {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.3s;
+  display: flex; /* Flexbox */
+  align-items: center; /* Zarovnanie na stred */
+  gap: 0.8rem; /* Medzera medzi ikonou a textom */
+  color: var(--text-muted); /* Farba */
+  text-decoration: none; /* Bez podčiarknutia */
+  font-size: 0.9rem; /* Veľkosť */
+  transition: color 0.3s; /* Prechod */
 }
 
-.contact-link:hover { color: var(--accent); }
-.contact-link-icon { font-size: 1.2rem; }
+/* CONTACT LINK HOVER - Hover efekt pre odkazy */
+.contact-link:hover { color: var(--accent); /* Zmena farby */ }
 
+/* CONTACT LINK ICON - Štýl pre ikony v odkazoch */
+.contact-link-icon { font-size: 1.2rem; /* Veľkosť ikony */ }
+
+/* CONTACT FORM - Štýl pre kontaktný formulár */
 .contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Vertikálne */
+  gap: 1rem; /* Medzera medzi prvkami */
 }
 
+/* CONTACT FORM INPUT, TEXTAREA - Štýly pre inputy a textarea */
 .contact-form input,
 .contact-form textarea {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.9rem 1.2rem;
-  color: var(--text);
-  font-size: 0.95rem;
-  font-family: 'DM Sans', sans-serif;
-  transition: border-color 0.3s;
-  resize: none;
+  background: var(--bg-card); /* Pozadie */
+  border: 1px solid var(--border); /* Rámček */
+  border-radius: 8px; /* Zaoblenie */
+  padding: 0.9rem 1.2rem; /* Padding */
+  color: var(--text); /* Farba textu */
+  font-size: 0.95rem; /* Veľkosť */
+  font-family: 'DM Sans', sans-serif; /* Font */
+  transition: border-color 0.3s; /* Prechod */
+  resize: none; /* Zakáže resize pre textarea */
 }
 
+/* CONTACT FORM INPUT PLACEHOLDER, TEXTAREA PLACEHOLDER - Štýl pre placeholder text */
 .contact-form input::placeholder,
-.contact-form textarea::placeholder { color: var(--text-muted); }
+.contact-form textarea::placeholder { color: var(--text-muted); /* Tlmená farba */ }
 
+/* CONTACT FORM INPUT FOCUS, TEXTAREA FOCUS - Focus štýly */
 .contact-form input:focus,
 .contact-form textarea:focus {
-  outline: none;
-  border-color: var(--accent);
+  outline: none; /* Bez outline */
+  border-color: var(--accent); /* Zmena rámčeka */
 }
 
-.contact-form .btn { align-self: flex-start; }
+/* CONTACT FORM BTN - Štýl pre tlačidlo vo formulári */
+.contact-form .btn { align-self: flex-start; /* Zarovnanie vľavo */ }
 
 /* ===== FOOTER ===== */
+/* FOOTER - Štýl pre päta stránky */
 footer {
-  text-align: center;
-  padding: 2rem;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  border-top: 1px solid var(--border);
-  position: relative;
-  z-index: 1;
+  text-align: center; /* Zarovnanie na stred */
+  padding: 2rem; /* Padding */
+  color: var(--text-muted); /* Tlmená farba */
+  font-size: 0.85rem; /* Menšia veľkosť */
+  border-top: 1px solid var(--border); /* Horný rámček */
+  position: relative; /* Pre z-index */
+  z-index: 1; /* Nad pozadím */
 }
 
 /* ===== SCROLL ANIMÁCIE ===== */
+/* HIDDEN - Štýl pre skryté elementy pred animáciou */
 .hidden {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  opacity: 0; /* Neviditeľné */
+  transform: translateY(40px); /* Posun dole */
+  transition: opacity 0.7s ease, transform 0.7s ease; /* Prechod */
 }
 
+/* VISIBLE - Štýl pre viditeľné elementy po animácii */
 .visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1; /* Viditeľné */
+  transform: translateY(0); /* Bez posunu */
 }
 
 /* ===== KEYFRAME ANIMÁCIE ===== */
+/* KEYFRAMES FADE UP - Animácia pre fade up efekt */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(30px); } /* Počiatočný stav */
+  to   { opacity: 1; transform: translateY(0); } /* Konečný stav */
 }
 
 /* ===== RESPONZÍVNOSŤ ===== */
+/* MEDIA MAX WIDTH 768PX - Štýly pre mobilné zariadenia */
 @media (max-width: 768px) {
-  .hamburger { display: flex; }
-
-  .nav-links {
-    position: fixed;
-    top: 65px;
-    left: 0;
-    right: 0;
-    background: var(--bg);
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    gap: 1.5rem;
-    border-bottom: 1px solid var(--border);
-    transform: translateY(-120%);
-    transition: transform 0.4s ease;
-    z-index: 999;
+  .hamburger {
+    display: flex; /* Zobrazí hamburger menu */
   }
 
-  .nav-links.open { transform: translateY(0); }
+  .nav-links {
+    position: fixed; /* Fixná pozícia */
+    top: 65px; /* Pod nav barom */
+    left: 0; /* Vľavo */
+    right: 0; /* Vpravo */
+    background: var(--bg); /* Pozadie */
+    flex-direction: column; /* Vertikálne */
+    align-items: center; /* Zarovnanie na stred */
+    padding: 2rem; /* Padding */
+    gap: 1.5rem; /* Medzera */
+    border-bottom: 1px solid var(--border); /* Spodný rámček */
+    transform: translateY(-120%); /* Skryté hore */
+    transition: transform 0.4s ease; /* Prechod */
+    z-index: 999; /* Vysoký z-index */
+  }
+
+  .nav-links.open {
+    transform: translateY(0); /* Zobrazí pri otvorení */
+  }
 
   .about-inner,
   .contact-inner {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr; /* Jeden stĺpec */
+    gap: 2rem; /* Medzera */
   }
 
-  section { padding: 4rem 6%; }
+  section {
+    padding: 4rem 6%; /* Menší padding */
+  }
 
   .cursor,
-  .cursor-dot { display: none; }
+  .cursor-dot {
+    display: none; /* Skryje vlastný kurzor */
+  }
 
-  body { cursor: auto; }
+  body {
+    cursor: auto; /* Použije štandardný kurzor */
+  }
 }
